@@ -1,0 +1,24 @@
+// configure pinmux to connect led-controller to gpio 8, which is connected to led
+&pinctrl {
+	ledc0_default: ledc0-default {
+		group1 {
+			pinmux = <LEDC_CH0_GPIO8>;
+			output-enable;
+		};
+	};
+};
+
+// add pinctrl to ledc and enable it
+&ledc0 {
+	pinctrl-0 = <&ledc0_default>;
+	pinctrl-names = "default";
+	status = "okay";
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+    // define channel 0 connection to timer 0
+	channel0@0 {
+		reg = <0x0>;
+		timer = <0>;
+	};
+};
