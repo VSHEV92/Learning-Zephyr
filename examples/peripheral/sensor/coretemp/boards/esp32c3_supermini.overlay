@@ -1,0 +1,4 @@
+
+&coretemp {
+    status = "okay";
+};
