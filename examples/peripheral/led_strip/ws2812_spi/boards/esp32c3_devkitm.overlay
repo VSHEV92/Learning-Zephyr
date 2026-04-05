@@ -1,0 +1,28 @@
+#include <zephyr/dt-bindings/led/led.h>
+
+&pinctrl {
+	spim2_default: spim2_default {
+		group2 {
+			pinmux = <SPIM2_MOSI_GPIO8>;
+		};
+	};
+};
+
+&spi2 {
+	line-idle-low;
+
+	rgb_led: ws2812@0 {
+		compatible = "worldsemi,ws2812-spi";
+
+		reg = <0>;
+		spi-max-frequency = <6400000>;
+
+		chain-length = <1>;
+		spi-cpha;
+		spi-one-frame = <0xf0>;
+		spi-zero-frame = <0xc0>;
+		color-mapping = <LED_COLOR_ID_GREEN
+				         LED_COLOR_ID_RED
+				         LED_COLOR_ID_BLUE>;
+	};
+};
