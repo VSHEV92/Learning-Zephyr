@@ -1,0 +1,16 @@
+&spi2 {
+    max7219: max7219@0 {
+        compatible = "maxim,max7219";
+        reg = <0>;
+        spi-max-frequency = <1000000>;
+        status = "disabled";
+    };
+};
+
+&spim2_default {
+    group1 {
+        pinmux = <SPIM2_SCLK_GPIO1>,
+                 <SPIM2_CSEL_GPIO2>,
+                 <SPIM2_MOSI_GPIO3>;
+    };
+};

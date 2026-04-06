@@ -1,0 +1,8 @@
+
+&spim2_default {
+    group1 {
+        pinmux = <SPIM2_SCLK_GPIO1>,
+                 <SPIM2_CSEL_GPIO2>,
+                 <SPIM2_MOSI_GPIO3>;
+    };
+};
