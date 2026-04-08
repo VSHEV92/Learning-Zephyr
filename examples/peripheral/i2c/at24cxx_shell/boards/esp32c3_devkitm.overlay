@@ -1,0 +1,24 @@
+
+&i2c0_default {
+    group1 {
+        pinmux = <I2C0_SCL_GPIO2>,
+                 <I2C0_SDA_GPIO3>;
+
+        bias-pull-up;
+        drive-open-drain;
+        output-high;
+    };
+};
+
+&i2c0 {
+
+	eeprom: at24@50 {
+		compatible = "atmel,at24";
+		reg = <0x50>;
+		size = <32768>;
+		pagesize = <8>;
+		address-width = <8>;
+		timeout = <10>;
+	};
+
+};
