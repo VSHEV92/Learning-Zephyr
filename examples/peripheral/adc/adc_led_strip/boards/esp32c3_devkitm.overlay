@@ -1,0 +1,58 @@
+#include <zephyr/dt-bindings/led/led.h>
+
+/ {
+    zephyr,user {
+        io-channels = <&adc0 0>; 
+    };
+};
+
+&adc0 {
+    status = "okay";
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    channel@0 {
+        reg = <0>;
+        
+        /*
+           ESP32C3:
+           ADC_GAIN_1   = 0 dB (0..750 mV)
+           ADC_GAIN_4_5 = 2.5 dB (0..1050 mV)
+           ADC_GAIN_1_2 = 6 dB (0..1300 mV)
+           ADC_GAIN_1_4 = 11 dB (0..2500 mV) 
+        */
+        
+        zephyr,gain = "ADC_GAIN_1_4"; 
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,resolution = <12>;
+    };
+};
+
+&i2s_default {
+	group1 {
+		pinmux = <I2S_O_SD_GPIO8>;
+	};
+};
+
+i2s_led: &i2s {
+	status = "okay";
+
+	dmas = <&dma 3>;
+	dma-names = "tx";
+
+	rgb_led: ws2812@0 {
+		compatible = "worldsemi,ws2812-i2s";
+
+		reg = <0>;
+		chain-length = <1>;
+		color-mapping = <LED_COLOR_ID_GREEN
+		        		 LED_COLOR_ID_RED
+				         LED_COLOR_ID_BLUE>;
+		reset-delay = <500>;
+	};
+};
+
+&dma {
+	status = "okay";
+};
