@@ -86,6 +86,7 @@ int main() {
     printk("Led Strip Client example\n");
 
     // ADC Configuration
+    uint8_t hue_string[4];
     uint32_t hue_data;
     uint32_t hue_mask = (1 << adc_spec.resolution) - 1;
 
@@ -123,7 +124,6 @@ int main() {
             hue_data = (hue_data * 360.0) / (1 << adc_spec.resolution);
 
             // write hue
-            uint8_t hue_string[4];
             snprintf((char*)hue_string, 4, "%3u", hue_data);
             bt_gatt_write(led_strip_conn, &write_params);
         }
