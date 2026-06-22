@@ -1,0 +1,17 @@
+&spi1 {
+    status = "okay";
+    pinctrl-0 = <&spi1_sck_pa5 &spi1_mosi_pa7>;
+    pinctrl-names = "default";
+    
+   // cs-gpios = <&gpiob 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    cs-gpios = <&gpiob 6 GPIO_ACTIVE_LOW>;
+
+    max7219: max7219@0 {
+        compatible = "maxim,max7219";
+        reg = <0>;
+        spi-max-frequency = <1000000>;
+        scan-limit = <7>;             
+        intensity = <8>;              
+        num-cascading = <1>;          
+    };
+};
