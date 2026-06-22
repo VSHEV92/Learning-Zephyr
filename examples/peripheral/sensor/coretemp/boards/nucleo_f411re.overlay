@@ -1,0 +1,15 @@
+/ {
+    aliases {
+        coretemp = &die_temp;
+    };
+};
+
+&adc1 {
+    status = "okay";
+    st,adc-clock-source = "SYNC";
+    st,adc-prescaler = <4>;
+};
+
+&die_temp {
+    status = "okay";
+};
