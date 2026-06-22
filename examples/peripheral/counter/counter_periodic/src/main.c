@@ -3,7 +3,7 @@
 #include <zephyr/drivers/led.h>
 #include <zephyr/drivers/counter.h>
 
-#define TIMER0_DEVICE DT_NODELABEL(timer0)
+#define TIMER0_DEVICE DT_ALIAS(timer)
 #define COUNTER0_DEVICE DT_CHILD(TIMER0_DEVICE, counter)
 
 #define LED_NODE DT_ALIAS(led0)

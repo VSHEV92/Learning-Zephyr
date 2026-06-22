@@ -4,7 +4,6 @@
 // set fench period to 500 msec
 #define FETCH_PERIOD_MS 500
 
-//#define CORETEMP_NODE DT_NODELABEL(coretemp)
 #define CORETEMP_NODE DT_ALIAS(coretemp)
 static const struct device *coretemp_dev = DEVICE_DT_GET(CORETEMP_NODE);
 

@@ -1,10 +1,10 @@
 / {
     aliases {
-        timer = &timer0;
+        timer = &timers2;
     };
 };
 
-&timer0 {
+&timers2 {
     status = "okay";
 
     counter {
