@@ -1,0 +1,26 @@
+/ {
+    aliases {
+        coretemp = &die_temp;
+    };
+};
+
+&adc3 {
+    status = "okay";
+    st,adc-clock-source = "SYNC";
+    st,adc-prescaler = <4>;
+};
+
+&die_temp {
+    status = "okay";
+};
+
+
+//&adc3 {
+//    status = "okay";
+//    #io-channel-cells = <1>;
+//};
+//
+//&die_temp {
+//    status = "okay";
+//    io-channels = <&adc3 12>;
+//};

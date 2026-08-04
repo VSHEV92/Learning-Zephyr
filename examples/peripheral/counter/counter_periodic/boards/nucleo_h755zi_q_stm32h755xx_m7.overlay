@@ -1,0 +1,13 @@
+/ {
+    aliases {
+        timer = &timers2;
+    };
+};
+
+&timers2 {
+    status = "okay";
+
+    counter {
+        status = "okay";
+    };
+};
